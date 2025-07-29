@@ -1,3 +1,6 @@
+> [!CAUTION]
+> This repository contains old, unfinished and possibly dangerous code! It should only be used as a template and with caution!
+
 # ToolingLib - Boilerplate for GameHacking
 
 This library is a set of helper functionality that I wrote for game hacking purposes.
