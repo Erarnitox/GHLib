@@ -1,10 +1,11 @@
 ﻿#pragma once
 
-#include <iostream>
 #include <vector>
+#include <string>
+#include <memory>
 
-#define COMP_CALL inline consteval
-#define SEMI_CALL inline constexpr
+#define COMP_CALL consteval 
+#define SEMI_CALL constexpr
 #define RUNT_CALL inline
 
 //--------------------------------------------------------------------------------------------------------
@@ -20,9 +21,9 @@ private:
 public:
 	SEMI_CALL Shellcode(std::vector<unsigned char>& opcodes);
 	SEMI_CALL Shellcode();
-	SEMI_CALL ~Shellcode();
+	RUNT_CALL ~Shellcode();
 	RUNT_CALL Shellcode& execute();
-	SEMI_CALL Shellcode& load_from_res(uint64_t id);
+	SEMI_CALL Shellcode& load_from_res(size_t d);
 	SEMI_CALL Shellcode& encrypt();
 	RUNT_CALL Shellcode& decrypt();
 	RUNT_CALL Shellcode& clear();
@@ -62,7 +63,7 @@ struct Patch {
 class Process {
 private:
 	int pid;
-	HANDLE hProc;
+	size_t hProc;
 	// std::vector<Patch> patches;
 
 public:
@@ -82,7 +83,7 @@ public:
 	//T read_memory(byte* from, size_t length);
 	//void write_memory(byte* to, T value);
 
-	uintptr_t get_module_address(const wchar_t* modName);
+	size_t get_module_address(const wchar_t* modName);
 	
 	[[nodiscard]]
 	bool is_running();
